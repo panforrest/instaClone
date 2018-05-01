@@ -1,7 +1,22 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
 
 class InstaClone extends Component {
+
+	constructor(){
+		super()
+		this.state = {
+			screenWidth: 0
+		}
+	}
+
+    componentDidMount(){
+    	//alert(Dimensions.get("window").width) //ALERT THE WIDTH OF THE DEVICE
+    	this.setState({
+    		screenWidth: Dimensions.get("window").width
+    	})
+    }
+
 	render(){
 		return(
             <View style={{ flex: 1, width: 100 + "%", height: 100 + "%"}}>
@@ -25,7 +40,7 @@ class InstaClone extends Component {
                 </View>
 
                 <Image 
-                    style={{ width: 100 + "%", height: 100}}
+                    style={{ width: this.state.screenWidth, height: 100}}
 		            source={{uri: 
 		              "https://lh3.googleusercontent.com/kPRNb82LdxpCTR8SaaPS3VJ4Q_tyTdAI8i6hZiwLwG-BWRQ5_v693Ipz4o3C2tAiC6N7q4MLWKBAz2g3Lc5HG6M-XA"
 		            }}
