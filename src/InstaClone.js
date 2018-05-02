@@ -72,6 +72,14 @@ class InstaClone extends Component {
                     <Image style={[styles.icon, {height: 36, width: 36}] } source={config.images.bubbleIcon} />
                     <Image style={[styles.icon, {height: 50, width: 35}] } source={config.images.arrowIcon} />
                 </View>
+                <View style={styles.iconBar}>
+                    <Image 
+                        style={[
+                        	styles.icon, 
+                        	{height: 30, width: 30}] } 
+                        	source={config.images.heartIcon} />
+                    <Text>128 likes</Text>
+                </View>
 
             </View>
 		)
