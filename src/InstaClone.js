@@ -1,10 +1,3 @@
-// <View style={{ flex: 1, width: 100 + "%", height: 100 + "%"}}>
-//                 <View style={styles.tempNav}>
-//                     <Text >Instagram</Text>
-//                     <PostFeed />
-//                 </View>
-
-//             </View>
 import React, { Component } from 'react'
 import { 
 	View, 
@@ -23,9 +16,9 @@ class InstaClone extends Component {
 			<View style={{ flex: 1, width: 100 + "%", height: 100 + "%"}}>
                 <View style={styles.tempNav}>
                     <Text >Instagram</Text>
-                    <PostFeed />
+                    
                 </View>
-
+                <PostFeed />
             </View>
             
 		)
