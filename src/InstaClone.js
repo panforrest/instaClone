@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
+import config from './config'
 
 class InstaClone extends Component {
 
@@ -22,7 +23,7 @@ class InstaClone extends Component {
 
         const imageUri = "https://lh3.googleusercontent.com/kPRNb82LdxpCTR8SaaPS3VJ4Q_tyTdAI8i6hZiwLwG-BWRQ5_v693Ipz4o3C2tAiC6N7q4MLWKBAz2g3Lc5HG6M-XA" + "=s" + imageHeight + "-c";
 
-        alert(imageHeight);
+        // alert(imageHeight);
 
 		return(
             <View style={{ flex: 1, width: 100 + "%", height: 100 + "%"}}>
@@ -49,7 +50,11 @@ class InstaClone extends Component {
                     style={{ width: this.state.screenWidth, height: 400}}
 		            source={{uri: imageUri}}
 		        />
-
+                <View style={styles.iconBar}>
+                    <Image style={[styles.icon, {height: 40, width: 40, tintColor:"rgb(252, 61, 57)"}] } source={config.images.heartIcon} />
+                    <Image style={[styles.icon, {height: 36, width: 36}] } source={config.images.bubbleIcon} />
+                    <Image style={[styles.icon, {height: 50, width: 35}] } source={config.images.arrowIcon} />
+                </View>
 
             </View>
 		)
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
 	},
 	userBar: {
 		width: 100 + "%",
-		height: 50,
+		height: config.styleConstants.rowHeight,
 		backgroundColor: "rgb(255, 255, 255)",
 		flexDirection: "row",
 		paddingHorizontal: 10,
@@ -80,6 +85,20 @@ const styles = StyleSheet.create({
 		height: 40,
 		width: 40,
 		borderRadius: 20
+	},
+
+	iconBar: {
+		height: config.styleConstants.rowHeight,
+		width: 100 + "%",
+		borderColor: "rgb(233,233,233)",
+		borderTopWidth: StyleSheet.hairlineWidth,
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		flexDirection: "row",
+		alignItems: "center" 
+	},
+
+	icon: {
+		marginLeft: 10
 	}
 
 })
