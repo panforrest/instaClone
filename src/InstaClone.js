@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native'
 import config from './config'
 
 class InstaClone extends Component {
@@ -14,7 +14,14 @@ class InstaClone extends Component {
     componentDidMount(){
     	//alert(Dimensions.get("window").width) //ALERT THE WIDTH OF THE DEVICE
     	this.setState({
+    		liked: false,
     		screenWidth: Dimensions.get("window").width
+    	})
+    }
+
+    likeToggled(){
+    	this.setState({
+    		liked: !this.state.liked
     	})
     }
 
@@ -22,6 +29,8 @@ class InstaClone extends Component {
         const imageHeight = Math.floor(this.state.screenWidth * 1.1);
 
         const imageUri = "https://lh3.googleusercontent.com/kPRNb82LdxpCTR8SaaPS3VJ4Q_tyTdAI8i6hZiwLwG-BWRQ5_v693Ipz4o3C2tAiC6N7q4MLWKBAz2g3Lc5HG6M-XA" + "=s" + imageHeight + "-c";
+
+        const heartIconColor = (this.state.liked) ? "rgb(252, 61, 57)": null
 
         // alert(imageHeight);
 
@@ -46,12 +55,20 @@ class InstaClone extends Component {
                     </View>
                 </View>
 
-                <Image 
-                    style={{ width: this.state.screenWidth, height: 400}}
-		            source={{uri: imageUri}}
-		        />
+                <TouchableOpacity
+                  activeOpacity={0.9}  //DETERMINES THE FLASH STRENGTH
+                  onPress={() => {
+                  	// alert("press")
+                    this.likeToggled();
+                  }}
+                >
+	                <Image 
+	                    style={{ width: this.state.screenWidth, height: 400}}
+			            source={{uri: imageUri}}
+			        />
+		        </TouchableOpacity>
                 <View style={styles.iconBar}>
-                    <Image style={[styles.icon, {height: 40, width: 40, tintColor:"rgb(252, 61, 57)"}] } source={config.images.heartIcon} />
+                    <Image style={[styles.icon, {height: 40, width: 40, tintColor: heartIconColor}] } source={config.images.heartIcon} />
                     <Image style={[styles.icon, {height: 36, width: 36}] } source={config.images.bubbleIcon} />
                     <Image style={[styles.icon, {height: 50, width: 35}] } source={config.images.arrowIcon} />
                 </View>
