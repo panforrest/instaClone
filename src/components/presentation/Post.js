@@ -28,7 +28,9 @@ class Post extends Component {
 	render(){
         const imageHeight = Math.floor(this.state.screenWidth * 1.1);
 
-        const imageUri = "https://lh3.googleusercontent.com/kPRNb82LdxpCTR8SaaPS3VJ4Q_tyTdAI8i6hZiwLwG-BWRQ5_v693Ipz4o3C2tAiC6N7q4MLWKBAz2g3Lc5HG6M-XA" + "=s" + imageHeight + "-c";
+        const imageSelection = (this.props.item % 2==0) ? "https://lh3.googleusercontent.com/kPRNb82LdxpCTR8SaaPS3VJ4Q_tyTdAI8i6hZiwLwG-BWRQ5_v693Ipz4o3C2tAiC6N7q4MLWKBAz2g3Lc5HG6M-XA" : "https://lh3.googleusercontent.com/vFmI6rmDXpo2v4TOHOx7yhkUHAWLZbnBriUPHi5VLYTl_6fnGadXjCM4Wr7N3AocO4OfNRqu0w7cr98wa6EFccInY3Q" 
+
+        const imageUri = imageSelection + "=s" + imageHeight + "-c";
 
         const heartIconColor = (this.state.liked) ? "rgb(252, 61, 57)": null
 
