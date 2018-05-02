@@ -18,6 +18,8 @@ class InstaClone extends Component {
     }
 
 	render(){
+        const imageUri = "https://lh3.googleusercontent.com/kPRNb82LdxpCTR8SaaPS3VJ4Q_tyTdAI8i6hZiwLwG-BWRQ5_v693Ipz4o3C2tAiC6N7q4MLWKBAz2g3Lc5HG6M-XA" + "=s" + this.state.screenWidth
+
 		return(
             <View style={{ flex: 1, width: 100 + "%", height: 100 + "%"}}>
                 <View style={styles.tempNav}>
@@ -40,10 +42,8 @@ class InstaClone extends Component {
                 </View>
 
                 <Image 
-                    style={{ width: this.state.screenWidth, height: 100}}
-		            source={{uri: 
-		              "https://lh3.googleusercontent.com/kPRNb82LdxpCTR8SaaPS3VJ4Q_tyTdAI8i6hZiwLwG-BWRQ5_v693Ipz4o3C2tAiC6N7q4MLWKBAz2g3Lc5HG6M-XA"
-		            }}
+                    style={{ width: this.state.screenWidth, height: 470}}
+		            source={{uri: imageUri}}
 		        />
 
 
