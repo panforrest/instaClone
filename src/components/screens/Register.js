@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native'
 
 
-class Login extends Component {
+class Register extends Component {
     login(){
     	// alert("pressed");
-    	this.props.navigation.navigate("register") //NAVIGATE TO MAIN APP
+    	this.props.navigation.navigate("main") //NAVIGATE TO MAIN APP
     }
 
 	render(){
@@ -22,7 +22,7 @@ class Login extends Component {
                 	this.login();  //DON'T FORGET () HERE
                 }}
             >
-                <Text>New user?</Text>
+                <Text>LOGIN PAGE</Text>
 
             </TouchableOpacity>    
 		)
@@ -30,4 +30,4 @@ class Login extends Component {
 
 }
 
-export default Login
+export default Register
