@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 
+
 class Login extends Component {
     login(){
-    	alert("pressed");
+    	// alert("pressed");
+    	this.props.navigation.navigate("main")
     }
 
 	render(){
 		return(
-			<TouchableOpacity
+			<TouchableOpacity  //WHEN TouchableOpacity NO View
                 style={{
                 	height: 100 + "%",
                 	width: 100 +"%",
@@ -17,7 +19,7 @@ class Login extends Component {
                 	alignItems: "center"
                 }}
                 onPress={() => {
-                	this.login();
+                	this.login();  //DON'T FORGET () HERE
                 }}
             >
                 <Text>LOGIN PAGE</Text>
