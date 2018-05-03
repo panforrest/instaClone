@@ -10,8 +10,9 @@ const Tabs = TabNavigator({
 })
 
 const IntroStack = StackNavigator({
-	login: Login,
-	register: Register
+	register: Register,
+	login: Login
+	
 })
 
 const MainStack = SwitchNavigator({
