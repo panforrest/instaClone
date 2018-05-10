@@ -14,14 +14,19 @@ class Register extends Component {
         }
     }
 
-    updateText(text){
-        alert(text)
+    updateText(text, field){
+        // alert(text)
+        let newCredentials = Object.assign(this.state.credentials);
+        newCredentials[field] = text;
+        this.setState({
+            credentials: newCredentials
+        })
     }
 
 
     register(){
-    	
-    	this.props.navigation.navigate("main") //NAVIGATE TO MAIN APP
+    	alert(JSON.stringify(this.state.credentials))
+    	// this.props.navigation.navigate("main") //NAVIGATE TO MAIN APP
     }
 
 	render(){
@@ -38,13 +43,20 @@ class Register extends Component {
                 
             >
                 <Text>LOGIN PAGE</Text>
-                <TextInput placeholder="Username" style={styles.input}/>
-                <TextInput 
-                    onChangeText={text => this.updateText(text)} 
-                    secureTextEntry 
-                    placeholder="Password" 
+                <TextInput
+                    value={this.state.login}
+                    onChangeText={text => this.updateText(text, "login")}  
+                    placeholder="Username" 
+                    autoCorrect={false}
                     style={styles.input}/>
-                <Button onPress={() => {this.register}} title="Signup" />
+                <TextInput 
+                    value={this.state.password}
+                    onChangeText={text => this.updateText(text, "password")} 
+                    secureTextEntry 
+                    placeholder="Password"
+                    autoCorrect={false} 
+                    style={styles.input}/>
+                <Button onPress={() => {this.register()}} title="Signup" />
 
             </View>    
 		)
