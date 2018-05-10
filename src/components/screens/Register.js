@@ -3,6 +3,22 @@ import { View, Text, TouchableOpacity, TextInput, Button, StyleSheet } from 'rea
 
 
 class Register extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            credentials: {
+                login: "",
+                password: ""
+            }
+        }
+    }
+
+    updateText(text){
+        alert(text)
+    }
+
+
     register(){
     	
     	this.props.navigation.navigate("main") //NAVIGATE TO MAIN APP
@@ -23,7 +39,11 @@ class Register extends Component {
             >
                 <Text>LOGIN PAGE</Text>
                 <TextInput placeholder="Username" style={styles.input}/>
-                <TextInput secureTextEntry placeholder="Password" style={styles.input}/>
+                <TextInput 
+                    onChangeText={text => this.updateText(text)} 
+                    secureTextEntry 
+                    placeholder="Password" 
+                    style={styles.input}/>
                 <Button onPress={() => {this.register}} title="Signup" />
 
             </View>    
