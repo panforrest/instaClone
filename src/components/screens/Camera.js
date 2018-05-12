@@ -52,30 +52,23 @@ class Camera extends Component {
       // console.log(data)
       console.log(this.state.userId)
       const turbo = Turbo({ site_id: "5ae7d6272b572d001483eaac" })
-      turbo
+      const cdnResp = await turbo
           .uploadFile({
             uri: data.uri,
             name:'camera_pic',
             type:'image/jpeg'
           })
-          .then(response=>{
-            console.log(response)
-          })
-          .catch(err=>{
-            console.log(err)
-          })
-
-      // const resp = await fetch(
-      //     config.baseUrl + "users/" + this.state.userId + "/photo", 
-      //     {
-      //         method: "POST",
-      //         headers: {
-      //           Accept: "application/json",
-      //           "Content-Type": "application/json",
-      //         },
-      //         body: JSON.stringify({ body:"test" }),
-      //     }
-      // )
+          const resp = await fetch(
+              config.baseUrl + "users/" + this.state.userId + "/photo", 
+              {
+                  method: "POST",
+                  headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ imageUrl:cdnResp.result.url }),
+              }
+          )
 
 
 
