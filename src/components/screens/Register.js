@@ -69,7 +69,7 @@ class Register extends Component {
                 }}
                 
             >
-                <Text>LOGIN PAGE</Text>
+                <Text></Text>
                 <TextInput
                     value={this.state.email}
                     onChangeText={text => this.updateText(text, "email")}  
