@@ -40,8 +40,9 @@ class Register extends Component {
           },
           body: JSON.stringify(this.state.credentials),
         })
-          .then(data=>{
-            console.log(JSON.stringify(data))
+          .then((response) => response.json())
+          .then(response=>{
+            console.log(JSON.stringify(response))
           })
           .catch(err=>{
             console.log(err.message)
@@ -65,7 +66,7 @@ class Register extends Component {
             >
                 <Text>LOGIN PAGE</Text>
                 <TextInput
-                    value={this.state.login}
+                    value={this.state.email}
                     onChangeText={text => this.updateText(text, "email")}  
                     placeholder="Username" 
                     autoCorrect={false}
