@@ -46,12 +46,12 @@ constructor(){
             if (jsonResponse.confirmation === "success"){
                 this.props.navigation.navigate("main")
             }else{                
-                throw new Error({message:'Sorry, something wrong: please try again'})
+                throw new Error({'Sorry, something wrong: please try again'})
             }
             // console.log(JSON.stringify(jsonResponse))
           })
           .catch(err=>{
-            console.log(JSON.stringify(err))
+            console.log(JSON.stringify(err.message))
           })
         // alert(JSON.stringify(this.state.credentials))
 
