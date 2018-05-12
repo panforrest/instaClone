@@ -32,13 +32,16 @@ constructor(){
 
 
     login(){
+        let credentials = this.state.credentials
+        credentials.email = this.state.credentials.email.toLowerCase()
+        console.log(JSON.stringify(credentials))
         fetch(config.baseUrl + 'login', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(this.state.credentials),
+          body: JSON.stringify(credentials),
         })
           .then(response => response.json())
           .then(jsonResponse=>{
@@ -46,12 +49,12 @@ constructor(){
             if (jsonResponse.confirmation === "success"){
                 this.props.navigation.navigate("main")
             }else{                
-                throw new Error('Sorry, something wrong: please try again')
+                throw new Error(jsonResponse.message)
             }
             // console.log(JSON.stringify(jsonResponse))
           })
           .catch(err=>{
-            console.log(JSON.stringify(err.message))
+            alert(JSON.stringify(err.message))
           })
         // alert(JSON.stringify(this.state.credentials))
 
@@ -72,12 +75,14 @@ constructor(){
             >
                 <Text>LOGIN PAGE</Text>
                 <TextInput
+                    autoCapitalize="none"
                     value={this.state.email}
                     onChangeText={text => this.updateText(text, "email")}  
                     placeholder="Username" 
                     autoCorrect={false}
                     style={styles.input}/>
                 <TextInput 
+                    autoCapitalize="none"
                     value={this.state.password}
                     onChangeText={text => this.updateText(text, "password")} 
                     secureTextEntry 

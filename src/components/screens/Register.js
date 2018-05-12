@@ -71,12 +71,14 @@ class Register extends Component {
             >
                 <Text></Text>
                 <TextInput
+                    autoCapitalize="none"
                     value={this.state.email}
                     onChangeText={text => this.updateText(text, "email")}  
                     placeholder="Username" 
                     autoCorrect={false}
                     style={styles.input}/>
                 <TextInput 
+                    autoCapitalize="none"
                     value={this.state.password}
                     onChangeText={text => this.updateText(text, "password")} 
                     secureTextEntry 
