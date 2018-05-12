@@ -47,7 +47,10 @@ constructor(){
           .then(jsonResponse=>{
             console.log(JSON.stringify(jsonResponse))
             if (jsonResponse.confirmation === "success"){
-                this.props.navigation.navigate("main")
+                this.props.navigation.navigate({
+                    routeName: "camera",
+                    params: { user: jsonResponse }
+                })
             }else{                
                 throw new Error(jsonResponse.message)
             }

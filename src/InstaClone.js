@@ -20,10 +20,13 @@ const MainStack = SwitchNavigator({
 	
 	intro: IntroStack,
 	// main: MainFeed
+    // main: screenTabs
     main: Tabs
 })
 
 class InstaClone extends Component {
+
+
     render(){
 		return (
 			<MainStack />

@@ -8,5 +8,6 @@ export default{
 	styleConstants: {
         rowHeight: 50
 	},
-	baseUrl: 'http://instaapi-55ibpu.turbo360-vertex.com/api/'
+	// baseUrl: 'http://instaapi-55ibpu.turbo360-vertex.com/api/'
+	baseUrl: "http://localhost:3000/api/"
 }

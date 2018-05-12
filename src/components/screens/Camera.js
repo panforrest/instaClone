@@ -8,8 +8,14 @@ import {
   View
 } from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import config from "../../config"
 
 class Camera extends Component {
+
+  componentDidMount(){
+    console.log(this.props.navigation.state.params.user)
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -39,6 +45,27 @@ class Camera extends Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options)
+      // fetch(config.baseUrl + '/users/ /photo', {
+      //     method: 'POST',
+      //     headers: {
+      //       Accept: 'application/json',
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify(this.state.credentials),
+      //   })
+      //     .then(response => response.json())
+      //     .then(jsonResponse=>{
+      //       if (jsonResponse.confirmation === "success"){
+      //           this.props.navigation.navigate("main")
+      //       }else{                
+      //           throw new Error({message:'Sorry, something wrong: please try again'})
+      //       }
+      //       // console.log(JSON.stringify(jsonResponse))
+      //     })
+      //     .catch(err=>{
+      //       console.log(err.message)
+      //     })
+        
       console.log(data);
     }
   };
