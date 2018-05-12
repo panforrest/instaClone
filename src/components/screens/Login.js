@@ -49,7 +49,9 @@ constructor(){
             if (jsonResponse.confirmation === "success"){
                 this.props.navigation.navigate({
                     routeName: "camera",
-                    params: { user: jsonResponse }
+                    // params: { user: jsonResponse }
+                    params: { user: jsonResponse.data.id }
+                    // params: { user: jsonResponse.data.id }
                 })
             }else{                
                 throw new Error(jsonResponse.message)
