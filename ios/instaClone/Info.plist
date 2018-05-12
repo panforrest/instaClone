@@ -54,5 +54,19 @@
 	<key>NSAllowsArbitraryLoads</key>
 	<true/>
 	</dict>
+<key>NSCameraUsageDescription</key>
+<string>Do you allow InstaC;one Camera Access</string>
+
+<!-- Include this only if you are planning to use the camera roll -->
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Do you allow InstaClone Photo Library Access</string>
+
+<!-- Include this only if you are planning to use the microphone for video recording -->
+<key>NSMicrophoneUsageDescription</key>
+<string>Do you allow InstaClone Microphone Access</string>
+
+<!-- Include this only if you are planning to use the camera roll -->
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Do you allow Camera Rol Access</string>
 </dict>
 </plist>
