@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import config from '../../config'
 
 class Profile extends Component {
@@ -50,9 +50,14 @@ class Profile extends Component {
                 }}
             >
                 { this.state.profilePics.map((pic, i)=>{
-                    return <Text>{ pic.url }</Text>
-                  })
-                }
+                    console.log(pic.url)
+                    return ( 
+                        <Image 
+                            style={{ height: 100, width: 100 }} 
+                            source={{uri: pic.url}} 
+                        />
+                    )
+                  })}
             </View>    
 		)
 	}
