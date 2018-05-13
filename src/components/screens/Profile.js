@@ -9,6 +9,7 @@ class Profile extends Component {
             userId: "5af512b5c01f3c00143e9345",
             profilePics: []
         }
+        // this.third = Dimensions.get("window").width/3
     }
 
     componentDidMount() {
@@ -36,6 +37,9 @@ class Profile extends Component {
     }
 
 	render(){
+        
+        // console.log(third)
+
 		return(
 			<View
                 style={{
@@ -49,19 +53,36 @@ class Profile extends Component {
                 	this.login();  //DON'T FORGET () HERE
                 }}
             >
-                { this.state.profilePics.map((pic, i)=>{
-                    console.log(pic.url)
-                    return ( 
-                        <Image 
-                            style={{ height: 100, width: 100 }} 
-                            source={{uri: pic.url}} 
-                        />
-                    )
-                  })}
+                <View style={styles.profilePicContainer}>
+                    { this.state.profilePics.map((pic, i)=>{
+                        console.log(pic.url)
+                        return ( 
+                            <Image 
+                                key = {pic.id}
+                                style={styles.profilePicThumb} 
+                                source={{ 
+                                    uri: `${pic.url}=s${
+                                        config.styleConstants.oneThirdWidth}-c`
+                                }} 
+                            />
+                        )
+                    })}
+                </View>        
             </View>    
 		)
 	}
-
 }
+
+const styles = StyleSheet.create({
+    profilePicContanier: {
+        width: 100 + "%",
+        flexDirection: "row",
+        flexWrap: "wrap"
+    },
+    profilePicThumb: {
+        width: config.styleConstants.oneThirdWidth,
+        height: config.styleConstants.oneThirdWidth
+    }
+})
 
 export default Profile
