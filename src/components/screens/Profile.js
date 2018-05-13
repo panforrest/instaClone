@@ -6,7 +6,8 @@ class Profile extends Component {
     constructor(){
         super()
         this.state = {
-            userId: "5af512b5c01f3c00143e9345"
+            userId: "5af512b5c01f3c00143e9345",
+            profilePics: []
         }
     }
 
@@ -21,7 +22,8 @@ class Profile extends Component {
         })
           .then(response => response.json())
           .then(jsonResponse=>{
-            console.log(JSON.stringify(jsonResponse))
+            // console.log(JSON.stringify(jsonResponse))
+            this.setState({ profilePics: jsonResponse.data })
           })
           .catch(err=>{
             alert(JSON.stringify(err.message))
@@ -35,7 +37,7 @@ class Profile extends Component {
 
 	render(){
 		return(
-			<TouchableOpacity  //WHEN TouchableOpacity NO View
+			<View
                 style={{
                 	height: 100 + "%",
                 	width: 100 +"%",
@@ -47,9 +49,11 @@ class Profile extends Component {
                 	this.login();  //DON'T FORGET () HERE
                 }}
             >
-                <Text>Future Profile</Text>
-
-            </TouchableOpacity>    
+                { this.state.profilePics.map((pic, i)=>{
+                    return <Text>{ pic.url }</Text>
+                  })
+                }
+            </View>    
 		)
 	}
 
