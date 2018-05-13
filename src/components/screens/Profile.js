@@ -1,8 +1,33 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-
+import config from '../../config'
 
 class Profile extends Component {
+    constructor(){
+        super()
+        this.state = {
+            userId: "5af512b5c01f3c00143e9345"
+        }
+    }
+
+    componentDidMount() {
+        // console.log("Mounted")
+        fetch(`${config.baseUrl}photo?id=${this.state.userId}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(response => response.json())
+          .then(jsonResponse=>{
+            console.log(JSON.stringify(jsonResponse))
+          })
+          .catch(err=>{
+            alert(JSON.stringify(err.message))
+          })      
+    }
+
     login(){
     	// alert("pressed");
     	this.props.navigation.navigate("main")
