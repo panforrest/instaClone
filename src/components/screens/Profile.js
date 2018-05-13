@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react'  
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import config from '../../config'
 
@@ -71,7 +71,8 @@ class Profile extends Component {
                     { this.state.profilePics.map((pic, i)=>{
                         // console.log(pic.url)
                         return ( 
-                            <Image 
+                            <Image
+                                 
                                 key = {pic.id}
                                 style={styles.profilePicThumb} 
                                 source={{ 
@@ -88,7 +89,7 @@ class Profile extends Component {
 }
 
 const styles = StyleSheet.create({
-    profilePicContanier: {
+    profilePicContainer: {
         width: 100 + "%",
         flexDirection: "row",
         flexWrap: "wrap"
