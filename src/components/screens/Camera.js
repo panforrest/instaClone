@@ -48,13 +48,13 @@ class Camera extends Component {
   takePicture = async function() {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
-      const data = await this.camera.takePictureAsync(options);
+      const imageData = await this.camera.takePictureAsync(options);
       // console.log(data)
       console.log(this.state.userId)
       const turbo = Turbo({ site_id: "5ae7d6272b572d001483eaac" })
       const cdnResp = await turbo
           .uploadFile({
-            uri: data.uri,
+            uri: imageData.uri,
             name:'camera_pic',
             type:'image/jpeg'
           })
@@ -68,25 +68,15 @@ class Camera extends Component {
                   },
                   body: JSON.stringify({ imageUrl:cdnResp.result.url }),
               }
-          )
+          )       
+      const myjson = await resp.json()
+      const { data } = myjson
 
+      this.props.navigation.navigate("profile", {
+        newPic: data
+      })
 
-
-          // .then(response => response.json())
-          // .then(jsonResponse=>{
-          //   console.log(JSON.stringify(jsonResponse))
-          //   if (jsonResponse.confirmation === "success"){
-          //       this.props.navigation.navigate("main")
-          //   }else{                
-          //       throw new Error({message:'Sorry, something wrong: please try again'})
-          //   }
-          //   // console.log(JSON.stringify(jsonResponse))
-          // })
-          // .catch(err=>{
-          //   console.log(err.message)
-          // })
-        
-      // console.log(data);
+      console.log(myjson)
     }
   };
 }

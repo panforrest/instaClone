@@ -13,7 +13,10 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        // console.log("Mounted")
+        this._navListener = this.props.navigation.addListener('didFocus', () => {
+          console.log(this.props.navigation.state.params)
+        })
+
         fetch(`${config.baseUrl}photo?user=${this.state.userId}`, {
           method: 'GET',
           headers: {
@@ -29,6 +32,10 @@ class Profile extends Component {
           .catch(err=>{
             alert(JSON.stringify(err.message))
           })      
+    }
+
+    componentWillUnmount() {
+        this._navListener.remove()
     }
 
     login(){
@@ -55,7 +62,7 @@ class Profile extends Component {
             >
                 <View style={styles.profilePicContainer}>
                     { this.state.profilePics.map((pic, i)=>{
-                        console.log(pic.url)
+                        // console.log(pic.url)
                         return ( 
                             <Image 
                                 key = {pic.id}
