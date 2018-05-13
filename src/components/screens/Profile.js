@@ -12,7 +12,7 @@ class Profile extends Component {
 
     componentDidMount() {
         // console.log("Mounted")
-        fetch(`${config.baseUrl}photo?id=${this.state.userId}`, {
+        fetch(`${config.baseUrl}photo?user=${this.state.userId}`, {
           method: 'GET',
           headers: {
             Accept: 'application/json',
