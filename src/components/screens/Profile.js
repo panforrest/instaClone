@@ -14,7 +14,14 @@ class Profile extends Component {
 
     componentDidMount() {
         this._navListener = this.props.navigation.addListener('didFocus', () => {
-          console.log(this.props.navigation.state.params)
+          // console.log(this.props.navigation.state.params)
+          if (this.props.navigation.state.params){
+            let newPics = Object.assign([], this.state.profilePics)
+            newPics.push(this.props.navigation.state.params.newPic)
+            this.setState({
+                profilePics: newPics
+            })
+          }
         })
 
         fetch(`${config.baseUrl}photo?user=${this.state.userId}`, {
