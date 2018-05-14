@@ -1,5 +1,5 @@
 import React, { Component } from 'react'  
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native'
 import config from '../../config'
 
 class Profile extends Component {
@@ -55,35 +55,43 @@ class Profile extends Component {
         // console.log(third)
 
 		return(
-			<View
-                style={{
-                	height: 100 + "%",
-                	width: 100 +"%",
-                	flex: 1,
-                	justifyContent: "center",
-                	alignItems: "center"
-                }}
-                onPress={() => {
-                	this.login();  //DON'T FORGET () HERE
-                }}
-            >
-                <View style={styles.profilePicContainer}>
-                    { this.state.profilePics.map((pic, i)=>{
-                        // console.log(pic.url)
-                        return ( 
-                            <Image
-                                 
-                                key = {pic.id}
-                                style={styles.profilePicThumb} 
-                                source={{ 
-                                    uri: `${pic.url}=s${
-                                        config.styleConstants.oneThirdWidth}-c`
-                                }} 
-                            />
-                        )
-                    })}
-                </View>        
-            </View>    
+            <ScrollView>
+    			<View
+                    style={{
+                    	height: 100 + "%",
+                    	width: 100 +"%",
+                    	flex: 1,
+                    	justifyContent: "center",
+                    	alignItems: "center"
+                    }}
+                >
+                    <View style={styles.profileInfo}>
+                        <View style={{ flexDirection: "row", width: 100 + "%"}}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={{ flexDirection: "row", width: 100 + "%"}}>
+                            <Text>2</Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.profilePicContainer}>
+                        { this.state.profilePics.map((pic, i)=>{
+                            // console.log(pic.url)
+                            return ( 
+                                <Image
+                                     
+                                    key = {pic.id}
+                                    style={styles.profilePicThumb} 
+                                    source={{ 
+                                        uri: `${pic.url}=s${
+                                            config.styleConstants.oneThirdWidth}-c`
+                                    }} 
+                                />
+                            )
+                        })}
+                    </View>        
+                </View>   
+            </ScrollView>     
 		)
 	}
 }
@@ -97,6 +105,12 @@ const styles = StyleSheet.create({
     profilePicThumb: {
         width: config.styleConstants.oneThirdWidth,
         height: config.styleConstants.oneThirdWidth
+    }, 
+    profileInfo: {
+        width: 100 + "%",
+        height: 250,
+        display: 'flex',
+        flexDirection: 'column'
     }
 })
 
