@@ -62,15 +62,62 @@ class Profile extends Component {
                     	width: 100 +"%",
                     	flex: 1,
                     	justifyContent: "center",
-                    	alignItems: "center"
+                    	alignItems: "center",
+                        paddingTop: 20
                     }}
                 >
                     <View style={styles.profileInfo}>
                         <View style={{ flexDirection: "row", width: 100 + "%"}}>
-                            <Text>1</Text>
+                            <View 
+                                style={{ 
+                                    flex: 3, 
+                                    height: 100,  
+                                    justifyContent: "center", 
+                                    alignItems: "center" 
+                                }} 
+                            >
+                                <Image
+                                    style={styles.userPic}
+                                    source={{
+                                        uri:
+                                            "https://lh3.googleusercontent.com/uY3WgCwA4UTBZ9qcLswX0QDQpiQqfAB3-vJFPzaXZplH7ci1Y3D5mxURbD9VvkXpUCRFTox3GJhpOkWHRQU4D-SOUA" 
+                                    }} 
+                                />
+                            </View>
+                            <View style={{ flex: 7, height: 100 }}>
+                                <View style={{flexDirection: "row"}}>
+                                    <View style={styles.statCol}>
+                                        <Text>128</Text>
+                                        <Text>Posts</Text>
+                                    </View>
+                                    <View style={styles.statCol}>
+                                        <Text>265</Text>
+                                        <Text>Followers</Text>
+                                    </View>
+                                    <View style={styles.statCol}>
+                                        <Text>184</Text>
+                                        <Text>Followings</Text>
+                                    </View>
+                                </View>
+                                <View 
+                                    style={{
+                                        flexDirection: "row", 
+                                        width: 100 + "%",
+                                        flex: 1,
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        backgroundColor: "rgb(239, 239, 239)"
+                                    }}>
+                                    <Text>Edit Profile</Text>
+                                </View>
+                            </View>
                         </View>
-                        <View style={{ flexDirection: "row", width: 100 + "%"}}>
-                            <Text>2</Text>
+                        <View style={styles.topBar}>
+
+                        </View>
+                        <View style={{ flexDirection: "column", width: 100 + "%"}}>
+                            <Text style={styles.fontBold}>Forrest Pan</Text>
+                            <Text style={styles.fontSm}>A React Native Developer</Text>
                         </View>
 
                     </View>
@@ -108,9 +155,43 @@ const styles = StyleSheet.create({
     }, 
     profileInfo: {
         width: 100 + "%",
-        height: 250,
+        // height: 250,
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        paddingVertical: 20
+    },
+    fontSm: {
+        fontSize: 16
+    },
+    fontBold: {
+        fontSize: 16,
+        fontWeight: "bold"
+    },
+    userPic: {
+        height: 80,
+        borderRadius: 40,
+        width: 80
+    },
+    statCol: {
+        flexDirection: "column", 
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    topBar: {
+        height:config.styleConstants.
+        rowHeight, 
+        width: 100+"%",
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderColor: 'rgb(239, 239, 239)',
+        flexDirection: 'row'
+    },
+    topBarIcon: {
+        borderLeftWidth: StyleSheet.hairlineWidth,
+        borderRightWidth: StyleSheet.hairlineWidth,
+        borderColor: "rgb(239, 239, 239)",
+        flex: 1
     }
 })
 
