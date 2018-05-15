@@ -1,6 +1,11 @@
 import constants from '../constants'
 
-var initialState = {}
+var initialState = {
+  user: {
+  	name: "testUser",
+  	id: "5af512b5c01f3c00143e9345"
+  }
+}
 
 export default(state= initialState, action) => {  
   // let updated = Object.assign({}, state)

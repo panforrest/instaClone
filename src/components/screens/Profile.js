@@ -1,18 +1,22 @@
 import React, { Component } from 'react'  
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native'
+import { connect } from 'react-redux'
+// import actions from '../../redux/actions'
+
 import config from '../../config'
 
 class Profile extends Component {
     constructor(){
         super()
         this.state = {
-            userId: "5af512b5c01f3c00143e9345",
+            // userId: "5af512b5c01f3c00143e9345",
             profilePics: []
         }
         // this.third = Dimensions.get("window").width/3
     }
 
     componentDidMount() {
+        console.log(this.props.state)
         this._navListener = this.props.navigation.addListener('didFocus', () => {
           // console.log(this.props.navigation.state.params)
           if (this.props.navigation.state.params){
@@ -24,7 +28,7 @@ class Profile extends Component {
           }
         })
 
-        fetch(`${config.baseUrl}photo?user=${this.state.userId}`, {
+        fetch(`${config.baseUrl}photo?user=${this.props.user.id}`, {
           method: 'GET',
           headers: {
             Accept: 'application/json',
@@ -195,4 +199,16 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Profile
+const stateToProps = state => {
+    return {
+        user: state.account.user
+    }
+}
+
+const dispatchToProps = dispatch => {
+    return {
+
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Profile)
