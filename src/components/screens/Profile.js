@@ -8,15 +8,15 @@ import config from '../../config'
 class Profile extends Component {
     constructor(){
         super()
-        this.state = {
+        // this.state = {
             // userId: "5af512b5c01f3c00143e9345",
-            profilePics: []
-        }
+        //     profilePics: []
+        // }
         // this.third = Dimensions.get("window").width/3
     }
 
     componentDidMount() {
-        console.log(this.props.state)
+        // console.log(this.props.state)
         this._navListener = this.props.navigation.addListener('didFocus', () => {
           // console.log(this.props.navigation.state.params)
           if (this.props.navigation.state.params){
@@ -28,21 +28,21 @@ class Profile extends Component {
           }
         })
 
-        fetch(`${config.baseUrl}photo?user=${this.props.user.id}`, {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-        })
-          .then(response => response.json())
-          .then(jsonResponse=>{
-            // console.log(JSON.stringify(jsonResponse))
-            this.setState({ profilePics: jsonResponse.data })
-          })
-          .catch(err=>{
-            alert(JSON.stringify(err.message))
-          })      
+        // fetch(`${config.baseUrl}photo?user=${this.props.user.id}`, {
+        //   method: 'GET',
+        //   headers: {
+        //     Accept: 'application/json',
+        //     'Content-Type': 'application/json',
+        //   },
+        // })
+        //   .then(response => response.json())
+        //   .then(jsonResponse=>{
+        //     // console.log(JSON.stringify(jsonResponse))
+        //     this.setState({ profilePics: jsonResponse.data })
+        //   })
+        //   .catch(err=>{
+        //     alert(JSON.stringify(err.message))
+        //   })      
     }
 
     componentWillUnmount() {
@@ -126,7 +126,7 @@ class Profile extends Component {
 
                     </View>
                     <View style={styles.profilePicContainer}>
-                        { this.state.profilePics.map((pic, i)=>{
+                        { this.props.user.photos.map((pic, i)=>{
                             // console.log(pic.url)
                             return ( 
                                 <Image
