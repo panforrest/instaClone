@@ -8,7 +8,8 @@ import {
     StyleSheet 
 } from 'react-native'
 import config from "../../config"
-
+import actions from "../../redux/actions"
+import { connect } from 'react-redux'
 
 class Login extends Component {
 constructor(){
@@ -47,12 +48,8 @@ constructor(){
           .then(jsonResponse=>{
             console.log(JSON.stringify(jsonResponse))
             if (jsonResponse.confirmation === "success"){
-                this.props.navigation.navigate({
-                    routeName: "camera",
-                    // params: { user: jsonResponse }
-                    params: { user: jsonResponse.data.id }
-                    // params: { user: jsonResponse.data.id }
-                })
+                this.props.userReceived(jsonResponse.data);
+                this.props.navigation.navigate('main');
             }else{                
                 throw new Error(jsonResponse.message)
             }
@@ -117,4 +114,16 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Login
+const stateToProps = state => {
+    return {
+
+    }
+}
+
+const dispatchToProps = dispatch => {
+    return {
+        userReceived: (user) => dispatch(actions.userReceived(user))
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Login)
