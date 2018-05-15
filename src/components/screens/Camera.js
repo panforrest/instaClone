@@ -10,14 +10,15 @@ import {
 import { RNCamera } from 'react-native-camera';
 import config from "../../config"
 import Turbo from 'turbo360' 
+import { connect } from "react-redux" 
 
 class Camera extends Component {
 
   constructor(props){
     super(props)
-    this.state = {
-        userId: this.props.navigation.state.params.user
-    }
+    // this.state = {
+    //     userId: this.props.navigation.state.params.user
+    // }
   }  
 
   render() {
@@ -50,7 +51,7 @@ class Camera extends Component {
       const options = { quality: 0.5, base64: true };
       const imageData = await this.camera.takePictureAsync(options);
       // console.log(data)
-      console.log(this.state.userId)
+      // console.log(this.state.userId)
       const turbo = Turbo({ site_id: "5ae7d6272b572d001483eaac" })
       const cdnResp = await turbo
           .uploadFile({
@@ -59,7 +60,7 @@ class Camera extends Component {
             type:'image/jpeg'
           })
           const resp = await fetch(
-              config.baseUrl + "users/" + this.state.userId + "/photo", 
+              config.baseUrl + "users/" + this.props.user.id + "/photo", 
               {
                   method: "POST",
                   headers: {
@@ -72,9 +73,7 @@ class Camera extends Component {
       const myjson = await resp.json()
       const { data } = myjson
 
-      this.props.navigation.navigate("profile", {
-        newPic: data
-      })
+      this.props.navigation.navigate("profile")
 
       console.log(myjson)
     }
@@ -103,4 +102,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Camera
+const stateToProps = state => {
+    return {
+        user: state.account.user
+    }
+}
+
+const dispatchToProps = dispatch => {
+    return {
+
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Camera)
